@@ -35,7 +35,7 @@
 
 ## How to Test
 
-컨테이너를 동작 시킨 후 Postman을 이용하여 https://localhost:3000/predict 끝점을 통해 테스트해 보실 수 있습니다. <br/>
+컨테이너를 동작 시킨 후 Postman을 이용하여 https://localhost:5000/predict 끝점을 통해 테스트해 보실 수 있습니다. <br/>
 <br/>
 <br/>
 
