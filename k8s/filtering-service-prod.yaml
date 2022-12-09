@@ -1,0 +1,40 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: filtering-service
+  namespace: prod
+spec:
+  replicas: 2
+  selector:
+    matchLabels:
+      app: filtering-service
+  template:
+    metadata:
+      labels:
+        app: filtering-service
+    spec:
+      containers:
+        - name: filtering-service
+          image: ghcr.io/baobab-kr/filtering-service/filtering-service-qa:v0.1.0
+          imagePullPolicy: Always
+          ports:
+            - containerPort: 5000
+          resources:
+            requests:
+              cpu: 200m
+              memory: 1G
+            limits:
+              cpu: 200m
+              memory: 1G
+---
+apiVersion: v1
+kind: Service
+metadata:
+  name: filtering-service
+  namespace: prod
+spec:
+  type: ClusterIP
+  ports:
+    - port: 5000
+  selector:
+    app: filtering-service
